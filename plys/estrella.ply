@@ -1,0 +1,48 @@
+ply
+format ascii 1.0
+comment Archivo PLY hecho por mi, contiene los vertices y caras de una estrella de 8 picos
+element vertex 14
+property float32 x
+property float32 y
+property float32 z
+element face 24
+property list uint8 int32 vertex_indices
+end_header
+-1.0 -1.0 -1.0
+1.0 -1.0 -1.0
+1.0 -1.0 1.0
+-1.0 -1.0 1.0
+-1.0 1.0 -1.0
+1.0 1.0 -1.0
+1.0 1.0 1.0
+-1.0 1.0 1.0
+0.0 0.0 -3.0
+3.0 0.0 0.0
+0.0 0.0 3.0
+-3.0 0.0 0.0
+0.0 3.0 0.0
+0.0 -3.0 0.0
+3 4 5 12
+3 5 6 12
+3 6 7 12
+3 4 7 12
+3 4 7 11
+3 0 4 11
+3 0 3 11
+3 3 7 11
+3 4 5 8
+3 1 5 8
+3 0 1 8
+3 0 4 8
+3 1 2 9
+3 1 5 9
+3 5 6 9
+3 2 6 9
+3 2 3 10
+3 2 6 10
+3 6 7 10
+3 3 7 10
+3 0 1 13
+3 1 2 13
+3 2 3 13
+3 0 3 13
