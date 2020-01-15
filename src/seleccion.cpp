@@ -66,8 +66,9 @@ bool Seleccion( int x, int y, Escena * escena, ContextoVis & cv_dib )
    // COMPLETAR: práctica 5:
    // Visualizar escena en modo selección y leer el color del pixel en (x,y)
    // Se deben de dar estos pasos:
-   Objeto3D * objeto_raiz = escena->objetoActual(); 
-   cout << "Seleccion( x == " << x << ", y == " << y << ", obj.raíz ==  " << objeto_raiz->leerNombre() << " )" << endl ;
+   
+   //Objeto3D * objeto_raiz = escena->objetoActual(); 
+   //cout << "Seleccion( x == " << x << ", y == " << y << ", obj.raíz ==  " << objeto_raiz->leerNombre() << " )" << endl ;
 
    // 1. Crear (si es necesario) y activar el framebuffer object (fbo) de selección
    if(fbo == nullptr)
@@ -79,15 +80,6 @@ bool Seleccion( int x, int y, Escena * escena, ContextoVis & cv_dib )
    //    * usar el mismo cauce, y la misma cámara que en 'cv_dib'
    //    * fijar el tamaño de la ventana igual que en 'cv_dib'
    //
-   /*ContextoVis * cv = new ContextoVis();
-   cv->modo_seleccion=true;
-   cv->iluminacion = false;
-   cv->modo_visu = ModosVisu :: relleno;
-   cv->cauce_act = cv_dib.cauce_act;
-   cv->ventana_tam_x = cv_dib.ventana_tam_x;
-   cv->ventana_tam_y = cv_dib.ventana_tam_y;
-   FijarColVertsIdent(*cv->cauce_act, 0);*/
-
 
    ContextoVis cv(cv_dib);
    cv.modo_seleccion=true;
