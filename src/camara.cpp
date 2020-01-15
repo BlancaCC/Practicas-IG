@@ -314,7 +314,9 @@ void Camara3Modos::desplRotarXY( const float da, const float db )
          // COMPLETAR: práctica 5
          // actualizar las dos primeras componentes (ángulos) de las coordenadas polares
          // actualizar las coordenadas cartesianas a partir de las polares
-         org_polares = org_polares + Tupla3f({da/50.0,db/50.0,0});
+         const float da_suave = da/50.0,
+                     db_suave = db/50.0;
+         org_polares = org_polares + Tupla3f({da_suave,db_suave,0.0});
          org_cartesianas = Cartesianas(org_polares);
 
          actualizarEjesMCV();

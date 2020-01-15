@@ -81,13 +81,16 @@ void MallaRevol::inicializar
    Tupla3f q;
    Matriz4f rot;
    Tupla2f textura;
+   float t_x, t_y;
    
    for (unsigned i = 0; i < num_copias; i++){
       rot = MAT_Rotacion((360.0*i)/(num_copias-1), 0.0, 1.0, 0.0);
       for (int j = 0; j < m; j++){
          q = rot * perfil[j];
          nor_ver.push_back(rot*nor_ver[j]);
-         textura = {(float)i/(num_copias-1), 1.0-t[j]};
+         t_x = (float)i/(num_copias-1);
+         t_y = 1.0-t[j];
+         textura = {t_x, t_y};
          vertices.push_back(q);
          cc_tt_ver.push_back(textura);
       }

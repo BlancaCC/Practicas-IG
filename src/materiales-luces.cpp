@@ -248,22 +248,7 @@ void ColFuentesLuz::activar( Cauce & cauce )
    // COMPLETAR: práctica 4: activar una colección de fuentes de luz
    //   (crear un array con los colores y otro con las posiciones/pos_dir,
    //    usar el cauce para activarlas)
-  /* std::vector<Tupla3f> colores;
-   std::vector<Tupla4f> pos_dir;
-   for(unsigned i = 0; i<vpf.size(); i++){
-      colores.push_back(vpf[i]->col_ambiente);
-      float longi = (vpf[i]->longi) *(360.0/(2*M_PI)),
-            lati = (vpf[i]->lati) *(360.0/(2*M_PI));
-
-      float x = sin(longi)*cos(lati),
-            y = sin(longi)*sin(lati),
-            z = cos(longi);
-
-      pos_dir.push_back({x,y,z,0});
-   }
-
-   cauce.fijarFuentesLuz(colores, pos_dir);*/
-      vector<Tupla3f> colores ;
+   vector<Tupla3f> colores ;
    vector<Tupla4f> pos_dir ;
 
    for(unsigned int i=0; i< vpf.size(); i++){
@@ -363,4 +348,12 @@ Col2Fuentes::Col2Fuentes()
    insertar( new FuenteLuz( +45.0, 60.0,  Tupla3f { f0, f0,     f0,    } ) );
    insertar( new FuenteLuz( -70.0, -30.0, Tupla3f { f1, f1*0.5, f1*0.5 } ) );
 
+}
+
+ColFuentesMia :: ColFuentesMia()
+{
+   insertar( new FuenteLuz( 45.0, 45.0, Tupla3f {1.0, 1.0, 1.0} ) );
+   insertar( new FuenteLuz( 135.0, 45.0, Tupla3f {1.0, 1.0, 1.0} ) );
+   insertar( new FuenteLuz( 225.0, 45.0, Tupla3f {1.0, 1.0, 1.0} ) );
+   insertar( new FuenteLuz( 315.0, 45.0, Tupla3f {1.0, 1.0, 1.0} ) );
 }

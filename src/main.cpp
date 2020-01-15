@@ -269,6 +269,13 @@ void FGE_PulsarLevantarTecla( GLFWwindow* window, int key, int scancode, int act
          cout << "Imprimir tiempos : " << (imprimir_tiempos ? "activado" : "desactivado") << endl << flush ;
          break ;
 
+      case GLFW_KEY_J :
+         cv.modo_seleccion =  ! cv.modo_seleccion ;
+         cout << "modo de seleccion : " << (cv.modo_seleccion ? "activado" : "desactivado") << endl << flush ;
+         break ;
+
+      
+
       default:
          redib = false ; // para otras teclas, no es necesario redibujar
          break ;

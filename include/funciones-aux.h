@@ -18,4 +18,11 @@
 
 Matriz4f MAT_Cizalla_xy(float a);
 
+//----------------------------------------------------------------------
+// Función que a partir de una tupla RGB flotante calcula el
+// identificador de objeto correspondiente. Implemento esta funcion por
+// comodidad a la hora de asignar identificadores a los objetos
+
+int calculaIdent(Tupla3f color);
+
 #endif

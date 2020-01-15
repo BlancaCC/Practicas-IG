@@ -2,6 +2,7 @@
 #include "malla-revol.h"
 #include "matrices-tr.h"
 #include "latapeones.h"
+#include "funciones-aux.h"
 
 
 
@@ -47,7 +48,7 @@ PeonMadera :: PeonMadera(){
     agregar(new MallaRevolPLY("../recursos/plys/peon.ply",50));
 
     ponerNombre("Peon de Madera");
-    ponerIdentificador(0xFF+1);
+    ponerIdentificador( calculaIdent({0.0,1.0,0.0}) );
 }
 
 PeonBlanco :: PeonBlanco(){
@@ -58,7 +59,7 @@ PeonBlanco :: PeonBlanco(){
     agregar(new MallaRevolPLY("../recursos/plys/peon.ply",50));
 
     ponerNombre("Peon Blanco");
-    ponerIdentificador(0xFF00+1);
+    ponerIdentificador( calculaIdent({1.0,1.0,1.0}) );
 }
 
 PeonNegro :: PeonNegro(){
@@ -69,7 +70,7 @@ PeonNegro :: PeonNegro(){
     agregar(new MallaRevolPLY("../recursos/plys/peon.ply",50));
 
     ponerNombre("Peon Negro");
-    ponerIdentificador(0xFF0000+1);
+    ponerIdentificador( calculaIdent({0.1,0.1,0.1}) );
 }
 
 LataPeones :: LataPeones(){
@@ -89,21 +90,21 @@ LataPepsi :: LataPepsi(){
     agregar(new Lata("../recursos/imgs/lata-pepsi.jpg"));
 
     ponerNombre("Lata de Pepsi");
-    ponerIdentificador(0xFF);
+    ponerIdentificador( calculaIdent({0.0,0.0,1.0}) );
 }
 
 LataCocaCola :: LataCocaCola(){
     agregar(new Lata("../recursos/imgs/lata-coke.jpg"));
 
     ponerNombre("Lata de Coca-Cola");
-    ponerIdentificador(0xFF00);
+    ponerIdentificador( calculaIdent({1.0, 0.0, 0.0}) );
 }
 
 LataUGR :: LataUGR(){
     agregar(new Lata("../recursos/imgs/window-icon.jpg"));
 
     ponerNombre("Lata de la UGR");
-    ponerIdentificador(0xFF0000);
+    ponerIdentificador( calculaIdent({1.0, 0.5, 0.0}) );
 }
 
 Latas :: Latas(){

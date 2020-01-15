@@ -368,7 +368,6 @@ void MallaInd::visualizarGL( ContextoVis & cv )
 
    using namespace std ;
    assert( cv.cauce_act != nullptr );
-   int id;
 
    if ( triangulos.size() == 0 || vertices.size() == 0 )
    {  cout << "advertencia: intentando dibujar malla vacía '" << leerNombre() << "'" << endl << flush ;
@@ -382,6 +381,7 @@ void MallaInd::visualizarGL( ContextoVis & cv )
    //   ** inmediato begin/end                   : usar 'visualizarGL_MI_BE'
    //   ** inmediato con un VAO (glDrawElements) : usar 'visualizarGL_MI_VAO'
    //   ** diferido con un VAO  (glDrawElements) : usar 'visualizarGL_MD_VAO'
+
 
    switch ( cv.modo_envio )
    {

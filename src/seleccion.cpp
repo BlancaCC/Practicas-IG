@@ -66,8 +66,8 @@ bool Seleccion( int x, int y, Escena * escena, ContextoVis & cv_dib )
    // COMPLETAR: práctica 5:
    // Visualizar escena en modo selección y leer el color del pixel en (x,y)
    // Se deben de dar estos pasos:
-
-   //cout << "Seleccion( x == " << x << ", y == " << y << ", obj.raíz ==  " << objeto_raiz.leerNombre() << " )" << endl ;
+   Objeto3D * objeto_raiz = escena->objetoActual(); 
+   cout << "Seleccion( x == " << x << ", y == " << y << ", obj.raíz ==  " << objeto_raiz->leerNombre() << " )" << endl ;
 
    // 1. Crear (si es necesario) y activar el framebuffer object (fbo) de selección
    if(fbo == nullptr)
@@ -79,33 +79,43 @@ bool Seleccion( int x, int y, Escena * escena, ContextoVis & cv_dib )
    //    * usar el mismo cauce, y la misma cámara que en 'cv_dib'
    //    * fijar el tamaño de la ventana igual que en 'cv_dib'
    //
-   ContextoVis * cv = new ContextoVis();
+   /*ContextoVis * cv = new ContextoVis();
    cv->modo_seleccion=true;
    cv->iluminacion = false;
    cv->modo_visu = ModosVisu :: relleno;
    cv->cauce_act = cv_dib.cauce_act;
    cv->ventana_tam_x = cv_dib.ventana_tam_x;
    cv->ventana_tam_y = cv_dib.ventana_tam_y;
-   FijarColVertsIdent(*cv->cauce_act, 0);
+   FijarColVertsIdent(*cv->cauce_act, 0);*/
+
+
+   ContextoVis cv(cv_dib);
+   cv.modo_seleccion=true;
+   cv.iluminacion = false;
+   cv.modo_visu = ModosVisu :: relleno;
+
+   FijarColVertsIdent(*cv.cauce_act, 0);
    
 
 
    // 3. Activar fbo, cauce y viewport. Configurar cauce (modo solido relleno, sin ilum.
    //    ni texturas). Limpiar el FBO (color de fondo: 0)
    fbo->activar(cv_dib.ventana_tam_x, cv_dib.ventana_tam_y);
-   cv->cauce_act->activar();
-   glViewport(0,0,cv->ventana_tam_x,cv->ventana_tam_y);
-
+   cv.cauce_act->activar();
+   cv.cauce_act->fijarEvalMIL(false);
+   glViewport(0,0,cv.ventana_tam_x,cv.ventana_tam_y);
+   glClearColor(0.0,0.0,0.0,1.0);
+   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
    // 4. Activar la cámara (se debe leer de la escena con 'camaraActual')
    CamaraInteractiva * ca = escena->camaraActual();
-   ca->activar(*cv->cauce_act);
+   ca->activar(*cv.cauce_act);
 
 
 
    // 5. Visualizar el objeto raiz actual (se debe leer de la escena con 'objetoActual()')
    Objeto3D * obj_raiz_act = escena->objetoActual();
-   obj_raiz_act->visualizarGL(*cv);
+   obj_raiz_act->visualizarGL(cv);
 
 
    // 6. Leer el color del pixel (usar 'LeerIdentEnPixel')
@@ -120,7 +130,7 @@ bool Seleccion( int x, int y, Escena * escena, ContextoVis & cv_dib )
 
    // 8. Si el identificador del pixel es 0, imprimir mensaje y terminar (devolver 'false')
    if(id==0){
-      std::cout << "ERROR: Identificador de pixel 0, terminando ...\n";
+      std::cout << "Identificador de pixel 0, no se ha seleccionado nada\n";
       return false;
    }
 
@@ -134,8 +144,10 @@ bool Seleccion( int x, int y, Escena * escena, ContextoVis & cv_dib )
       ca->mirarHacia(centro);
       std :: cout << "Objeto con id " << id << " seleccionado: " + obj_salida->leerNombre() + "\n";
    }
-   else
+   else{
       std :: cout << "No se ha seleccionado nada\n";
+      return false;
+   }
 
    // al final devolvemos 'true', ya que hemos encontrado un objeto
    return true ;

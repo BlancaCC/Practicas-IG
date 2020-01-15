@@ -251,4 +251,10 @@ class Col2Fuentes : public ColFuentesLuz
 } ;
 
 
+class ColFuentesMia : public ColFuentesLuz
+{
+   public:
+      ColFuentesMia();
+} ;
+
 #endif

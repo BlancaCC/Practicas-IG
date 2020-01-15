@@ -84,7 +84,6 @@ void NodoGrafoEscena::visualizarGL( ContextoVis & cv )
    // COMPLETAR: práctica 3: recorrer las entradas y visualizar cada nodo.
    //Guardar ModelView
    cv.cauce_act->pushMM();
-   int id;
 
    //Guardar Material activo
    Material * material_pre = cv.iluminacion ? cv.material_act : nullptr;
@@ -213,7 +212,7 @@ void NodoGrafoEscena::calcularCentroOC()
             suma = suma + (mat * entradas[i].objeto->leerCentroOC() );
             num_centros++;
          } else if ( entradas[i].tipo == TipoEntNGE::transformacion ) {
-            mat = (*entradas[i].matriz) * mat;
+            mat = mat*(*entradas[i].matriz);
          }
       }
 
@@ -264,7 +263,7 @@ bool NodoGrafoEscena::buscarObjeto
       if ( entradas[i].tipo == TipoEntNGE::objeto) 
          encontrado =  entradas[i].objeto->buscarObjeto(ident_busc, mat, objeto, centro_wc );
       else if (entradas[i].tipo == TipoEntNGE::transformacion)
-         mat = (*entradas[i].matriz) * mat;
+         mat = mat * (*entradas[i].matriz) ;
    }
 
    // ni este nodo ni ningún hijo es el buscado: terminar
